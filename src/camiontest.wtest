@@ -1,0 +1,39 @@
+import camion.*
+import cosas.*
+
+test "testX" {
+	
+	camion.cargar(knightRider)
+	camion.cargar(bumblebee)
+	assert.equals(2300, camion.pesoTotal())
+	camion.descargar(knightRider)
+	assert.equals(1800, camion.pesoTotal())
+	assert.equals(false, camion.excedidoDePeso())
+	camion.cargar(knightRider)
+	assert.equals(false, camion.excedidoDePeso())
+	assert.equals([bumblebee], camion.objetosPeligrosos(11) )
+
+}
+
+test "mas peligroso que"{
+	
+	camion.cargar(bumblebee)
+	camion.cargar(bateriaAntiaerea)
+	assert.equals([bateriaAntiaerea], camion.objetoMasPeligrosoQue(bumblebee))
+}
+
+
+test "peligrosidad" {
+	
+	camion.cargar(bateriaAntiaerea)
+	assert.equals([bateriaAntiaerea], camion.objetosPeligrosos(11))
+	camion.descargar(bateriaAntiaerea)
+	camion.cargar(arenaAGranel)
+	arenaAGranel.peso(9)
+	assert.equals([], camion.objetosPeligrosos(11))
+	camion.cargar(paqueteDeLadrillos)
+	camion.descargar(arenaAGranel)
+	assert.equals([paqueteDeLadrillos], camion.objetosPeligrosos(1))
+	
+	
+}
