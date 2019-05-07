@@ -1,0 +1,19 @@
+import camion.*
+import cosas.*
+
+
+test "clase de camion" {
+
+	var camionVerde = new Camion()
+	camionVerde.cargar(knightRider)
+	camionVerde.cargar(bumblebee)
+	assert.equals(2300, camionVerde.pesoTotal())
+	
+	var camionMorado = new Camion()
+	camionMorado.cargar(arenaAGranel)
+	arenaAGranel.peso(20)
+	camionMorado.cargar(bumblebee)
+	assert.equals(1820, camionMorado.pesoTotal())
+
+}
+// cambios 07/05

@@ -12,7 +12,7 @@ object bumblebee {
 }
 
 object paqueteDeLadrillos{
-	var cantidadDeLadrillos
+	var cantidadDeLadrillos = 0
 	
 	method cantidadDeLadrillos() { return cantidadDeLadrillos }
 	method cantidadDeLadrillos(cuantos){ cantidadDeLadrillos = cuantos }
@@ -21,7 +21,7 @@ object paqueteDeLadrillos{
 }
 
 object arenaAGranel {
-	var peso
+	var peso = 0
 	
 	method peso(kilos){ peso = kilos }
 	method peso() { return peso }
@@ -34,3 +34,4 @@ object bateriaAntiaerea {
 	method peso() { return if(tieneMisiles){ 300 } else { 200 } }
 	method nivelPeligrosidad() { return if(tieneMisiles){ 100 } else { 0 } }
 }
+//cambios 07/05

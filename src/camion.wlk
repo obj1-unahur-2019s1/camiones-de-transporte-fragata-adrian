@@ -1,7 +1,9 @@
 import cosas.*
 
-object camion {
+class Camion {
 	const property cosas = []
+	const tara = 1000
+	const pesoMaximo = 2500
 	
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
@@ -12,11 +14,11 @@ object camion {
 	}
 	
 	method pesoTotal() {
-		return cosas.sum({n => n.peso()}) + 1000
+		return cosas.sum({n => n.peso()}) + tara
 	}
 	
 	method excedidoDePeso() {
-		return self.pesoTotal() > 2500
+		return self.pesoTotal() > pesoMaximo
 	}
 	
 	method objetosPeligrosos(nivel) {
@@ -26,13 +28,25 @@ object camion {
 	}
 	
 	method objetoMasPeligrosoQue(cosa) {
-		return cosas.filter({c =>
-			c.nivelPeligrosidad() > cosa.nivelPeligrosidad()
-		})
+		return self.objetosPeligrosos(cosa.nivelPeligrosidad())
 	}
 	
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
-		cosas.
+		return cosas.all({cosa => 
+			 cosa.nivelPeligrosidad() < nivelMaximoPeligrosidad
+		})
 	}
 	
+	method tieneAlgoQuePesaEntre(min, max){
+		return cosas.any({cosa => 
+			cosa.peso() >= min and cosa.peso() <= max
+		})
+	}
+	
+	method cosaMasPesada(){
+		return cosas.max({cosa =>
+			cosa.peso()
+		})
+	}
+// cambios 7/05
 }
